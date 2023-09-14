@@ -1,0 +1,90 @@
+//import java.util.Arrays;
+class GetResult {
+    int array[][]=null;
+    public GetResult(int rowSize,int columnSize)
+    {
+        array=new int[rowSize][columnSize];
+        for(int i=0;i<rowSize;i++)
+        {
+            for(int j=0;j<columnSize;j++)
+            {
+                array[i][j]=Integer.MIN_VALUE;
+            }
+        }
+    }
+    public void insertElements(int rowIndex,int columnIndex,int value)
+    {
+        try
+        {
+            array[rowIndex][columnIndex]=value;
+        }catch(Exception e)
+        {
+            System.out.println("Index out of bound");
+        }
+
+    }
+    public void accessElement(int rowIndex,int columnIndex)
+    {
+        System.out.println("The row "+rowIndex+" the column "+columnIndex);
+        try
+        {
+            System.out.println(array[rowIndex][columnIndex]);
+        }catch(Exception e)
+        {
+            System.out.println("Array out of index");
+        }
+    }
+    public void arrayTraversal()
+    {
+        for(int i=0;i<array.length;i++)
+        {
+            for(int j=0;j<array[0].length;j++)
+            {
+                System.out.print(array[i][j]+" ");
+            }
+        }
+        System.out.println();
+    }
+    public void searchElement(int value)
+    {
+        for(int i=0;i<array.length;i++)
+        {
+            for(int j=0;j<array[0].length;j++)
+            {
+                if(array[i][j]==value)
+                {
+                    System.out.println("Found at "+i+" "+j);
+                    return;
+                }
+            }
+        }
+        System.out.println("Not Found");
+    }
+    public void deleteElement(int rowIndex,int columnIndex)
+    {
+        try
+        {
+            array[rowIndex][columnIndex]=Integer.MIN_VALUE;
+        }catch(Exception e)
+        {
+            System.out.println("Out of Bond");
+        }
+
+    }    
+
+}
+public class javaArray
+{
+    public static void main(String[] args) {
+        GetResult ja = new GetResult(2, 2);
+        ja.insertElements(0, 0, 5);
+        ja.insertElements(0, 1, 10);
+        ja.insertElements(1, 1, 25);
+        ja.accessElement(1, 1);
+        ja.accessElement(2, 0);
+        ja.searchElement(25);
+        ja.deleteElement(0, 1);
+        ja.arrayTraversal();
+        //System.out.println(Arrays.deepToString(ja.array));
+    }
+}
